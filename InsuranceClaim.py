@@ -31,7 +31,7 @@ Garden = st.checkbox('Has a Garden')
 
 Settlement = st.checkbox('Settlement')
 
-BuildingDimension = st.number_input('Square Meter area of the building', min_value=1, max_value=30745, step=1.0)
+BuildingDimension = st.number_input('Square Meter area of the building', min_value=1.00, max_value=30745.00, step=1.00)
 
 BuildingType = st.selectbox('Building Type', ['1', '2', '3', '4'])
 

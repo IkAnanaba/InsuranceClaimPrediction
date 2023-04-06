@@ -3,6 +3,8 @@ from sklearn.preprocessing import StandardScaler
  
 import pickle
 import streamlit as st
+import pandas as pd
+import numpy as np
 
 pickles = {'scaler': ['scaler.pkl'], 'encoders': ['encoders.pkl']}
 model = tf.keras.models.load_model('neural_model')

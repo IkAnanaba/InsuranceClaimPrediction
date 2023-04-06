@@ -1,10 +1,11 @@
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
-
+ 
 import pickle
 import streamlit as st
 
-pickles = {'model': ['neural_model.pkl'], 'scaler': ['scaler.pkl'], 'encoder': ['encoder.pkl']}
+pickles = {'scaler': ['scaler.pkl'], 'encoders': ['encoder.pkl']}
+model = tf.keras.models.load_model('neural_model')
 
 for pkl in pickles:
     with open(pickles[pkl][0], "rb") as pkl_file:

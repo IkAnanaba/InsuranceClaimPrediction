@@ -26,7 +26,7 @@ def transform(dataFrame):
 
 def scale(dataFrame):
     df = dataFrame.copy()
-    pickles['scaler'].fit(df)
+    pickles['scaler'][0].fit(df)
 
     return df
 

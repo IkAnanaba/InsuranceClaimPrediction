@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 import pickle
 import streamlit as st
 
-pickles = {'model': ['neural_model.pk1'], 'scaler': ['scaler.pkl'], 'encoder': ['encoder.pkl']}
+pickles = {'model': ['neural_model.pkl'], 'scaler': ['scaler.pkl'], 'encoder': ['encoder.pkl']}
 
 for pkl in pickles:
     with open(pickles[pkl][0], "rb") as pkl_file:

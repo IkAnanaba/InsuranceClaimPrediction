@@ -63,7 +63,7 @@ if st.button('Get your result'):
             'Building Dimension' : BuildingDimension,
             'Building_Type' : BuildingType,
             'Date_Of_Occupancy': YearOfOccupancy}
-    data_frame = pd.Dataframe(data)
+    data_frame = pd.DataFrame(data)
 
     data_frame = transform(data_frame)
     data_frame = scale(data_frame)

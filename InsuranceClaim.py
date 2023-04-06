@@ -19,7 +19,7 @@ YearOfObservation = st.number_input('Year propery was observed',  min_value=2013
 
 YearOfOccupancy = st.number_input('Year of Occupancy',  min_value=2000.00, max_value=2016.00, step=1.00)
 
-InsuredPeriod = st.slider('Buidling insurance period [Full Year = 1, 6 months = 0.5]', 0, 1)
+InsuredPeriod = st.slider('Buidling insurance period [Full Year = 1, 6 months = 0.5]', max_value=0.00, min_value=1.00, step=0.1)
 
 Residential = st.checkbox('Residential')
 

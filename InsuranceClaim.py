@@ -36,5 +36,5 @@ BuildingDimension = st.number_input('Square Meter area of the building', min_val
 BuildingType = st.selectbox('Building Type', ['1', '2', '3', '4'])
 
 if st.button('Get your result'):
-    st.write("HAHAHA, I'M NOT GINVING YOU JACKKKKKKKK")
+    st.write("HAHAHA, I'M NOT GIVING YOU JACKKKKKKKK")
 

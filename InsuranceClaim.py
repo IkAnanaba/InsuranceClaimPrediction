@@ -9,7 +9,7 @@ model = tf.keras.models.load_model('neural_model')
 
 for pkl in pickles:
     with open(pickles[pkl][0], "rb") as pkl_file:
-        pickles[pkl][1] = pickle.load(pkl_file)
+        pickles[pkl][0] = pickle.load(pkl_file)
 
 print(pickles)
 print("here i am")

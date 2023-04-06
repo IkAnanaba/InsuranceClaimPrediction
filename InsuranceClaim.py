@@ -13,5 +13,9 @@ for pkl in pickles:
 
 
 
-st.title('See if your building is likely to have an insurance claim')
+st.title('Are you liable for an insurance claim?')
+
+YearOfObservation = st.number_input('Year propery was observed',  min_value=2013.00, max_value=2016.00, step=1.00)
+
+YearOfOccupancy = st.selectbox('Year of Occupancy',  min_value=2000.00, max_value=2016.00, step=1.00)
 

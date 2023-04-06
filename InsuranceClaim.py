@@ -19,7 +19,7 @@ YearOfObservation = st.number_input('Year propery was observed',  min_value=2013
 
 YearOfOccupancy = st.number_input('Year of Occupancy',  min_value=2000.00, max_value=2016.00, step=1.00)
 
-InsuredPeriod = st.slider('Buidling insurance period [Full Year = 1, 6 months = 0.5]', max_value=0.00, min_value=1.00, step=0.1)
+InsuredPeriod = st.slider('Buidling insurance period [Full Year = 1, 6 months = 0.5]', max_value=0.00, min_value=1.00, step=0.01)
 
 Residential = st.checkbox('Residential')
 
@@ -34,4 +34,7 @@ Settlement = st.checkbox('Settlement')
 BuildingDimension = st.number_input('Square Meter area of the building', min_value=1.00, max_value=30745.00, step=1.00)
 
 BuildingType = st.selectbox('Building Type', ['1', '2', '3', '4'])
+
+if st.button('Get your result'):
+    st.write("HAHAHA, I'M NOT GINVING YOU JACKKKKKKKK")
 

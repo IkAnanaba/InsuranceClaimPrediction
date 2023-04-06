@@ -11,7 +11,22 @@ for pkl in pickles:
     with open(pickles[pkl][0], "rb") as pkl_file:
         pickles[pkl][0] = pickle.load(pkl_file)
 
+def transform(dataFrame):
+    df = dataFrame.copy()
+    df['Garden'] = df['Garden'].map({True: 'V', False: 'O'})
+    df['Residential'] = df['Residential'].map({True:1, False: 0})
+    df['Building_Painted'] = df['Building_Painted'].map({True:'N', False:'V'})
+    df['Building_Fenced'] = df['Building_Fenced'].map({True:'N', False:'V'})
+    df['Settlement'] = df['Settlement'].map({True:'R', False:'U'})
+    df['Building_Type'] = df['Building_Type'].apply(lambda x: int(x))
+    
+    return df
 
+def scale(dataFrame):
+    df = dataFrame.copy()
+    pickles['scaler'].fit(df)
+
+    return df
 
 st.title('Are you liable for an insurance claim?')
 
@@ -36,5 +51,20 @@ BuildingDimension = st.number_input('Square Meter area of the building', min_val
 BuildingType = st.selectbox('Building Type', ['1', '2', '3', '4'])
 
 if st.button('Get your result'):
-    st.write("HAHAHA, I'M NOT GIVING YOU JACKKKKKKKK")
+    data = {'YearOfObservation': YearOfObservation,
+            'Insured_Period': InsuredPeriod,
+            'Residential': Residential,
+            'Building_Painted': BuildingPainted,
+            'Building_Fenced': BuildingPainted,
+            'Garden' : Garden,
+            'Settlement' : Settlement,
+            'Building Dimension' : BuildingDimension,
+            'Building_Type' : BuildingType,
+            'Date_Of_Occupancy': YearOfOccupancy}
+    data_frame = pd.Dataframe(data)
+
+    data_frame = transform(data_frame)
+    data_frame = scale(data_frame)
+
+    st.write(model.predict(data_frame))
 

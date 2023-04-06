@@ -21,7 +21,11 @@ def transform(dataFrame):
     df['Building_Fenced'] = df['Building_Fenced'].map({True:'N', False:'V'})
     df['Settlement'] = df['Settlement'].map({True:'R', False:'U'})
     df['Building_Type'] = df['Building_Type'].apply(lambda x: int(x))
-    st.write(df.head())
+
+    df['Garden'] = pickles['encoders']['Garden'].transform(df[['Garden']])
+    df['Building_Fenced'] = pickles['encoders']['Building_Fenced'].transform(df[['Building_Fenced']])
+    df['Building_Painted'] = pickles['encoders']['Building_Painted'].transform(df[['Building_Painted']])
+    df['Settlement'] = pickles['encoders']['Settlement'].transform(df[['Settlement']])
     
     return df
 

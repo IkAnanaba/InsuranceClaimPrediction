@@ -21,6 +21,7 @@ def transform(dataFrame):
     df['Building_Fenced'] = df['Building_Fenced'].map({True:'N', False:'V'})
     df['Settlement'] = df['Settlement'].map({True:'R', False:'U'})
     df['Building_Type'] = df['Building_Type'].apply(lambda x: int(x))
+    st.write(df.head())
     
     return df
 

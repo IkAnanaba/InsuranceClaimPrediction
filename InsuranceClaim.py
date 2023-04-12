@@ -59,7 +59,7 @@ if st.button('Get your result'):
             'Settlement' : Settlement,
             'Building Dimension' : BuildingDimension,
             'Building_Type' : BuildingType,
-            'Date_Of_Occupancy': YearOfOccupancy}
+            'Date_of_Occupancy': YearOfOccupancy}
     data_frame = pd.DataFrame(data, index=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
     data_frame = transform(data_frame)

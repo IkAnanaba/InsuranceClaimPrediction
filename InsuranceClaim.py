@@ -6,12 +6,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-pickles = {'scaler': ['scaler.pkl'], 'encoders': ['encoders.pkl']}
 model = tf.keras.models.load_model('neural_model')
 
-for pkl in pickles:
-    with open(pickles[pkl][0], "rb") as pkl_file:
-        pickles[pkl][0] = pickle.load(pkl_file)
+with open('scaler.pkl', "rb") as pkl_file:
+        scaler = pickle.load(pkl_file)
 
 def transform(dataFrame):
     df = dataFrame.copy()
@@ -24,6 +22,10 @@ def transform(dataFrame):
     
     return df
 
+def scale(dataFrame):
+    df = dataFrame.copy()
+    df = scaler.fit(df)
+    return df
 
 st.title('Are you liable for an insurance claim?')
 
@@ -61,6 +63,8 @@ if st.button('Get your result'):
     data_frame = pd.DataFrame(data, index=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
     data_frame = transform(data_frame)
+    data_frame = scale(data_frame)
+    
     data = dataframe.values
-    st.write(model.predict(data_frame))
+    st.write(model.predict(data))
 

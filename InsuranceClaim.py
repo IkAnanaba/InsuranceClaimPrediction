@@ -8,7 +8,7 @@ import numpy as np
 
 model = tf.keras.models.load_model('neural_model')
 
-with open('scaler.pkl', "rb") as pkl_file:
+with open('Scaler.pkl', "rb") as pkl_file:
         scaler = pickle.load(pkl_file)
 
 def transform(dataFrame):
@@ -64,7 +64,7 @@ if st.button('Get your result'):
 
     data_frame = transform(data_frame)
     data_frame = scale(data_frame)
-    
+
     data = dataframe.values
     st.write(model.predict(data))
 

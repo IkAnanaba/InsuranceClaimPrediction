@@ -15,25 +15,15 @@ for pkl in pickles:
 
 def transform(dataFrame):
     df = dataFrame.copy()
-    df['Garden'] = df['Garden'].map({True: 'V', False: 'O'})
-    df['Residential'] = df['Residential'].map({True:1, False: 0})
-    df['Building_Painted'] = df['Building_Painted'].map({True:'N', False:'V'})
-    df['Building_Fenced'] = df['Building_Fenced'].map({True:'N', False:'V'})
-    df['Settlement'] = df['Settlement'].map({True:'R', False:'U'})
+    df['Garden'] = df['Garden'].apply(lambda x: int(x))
+    df['Residential'] = df['Residential'].apply(lambda x: int(x))
+    df['Building_Painted'] = df['Building_Painted'].apply(lambda x: int(x))
+    df['Building_Fenced'] = df['Building_Fenced'].apply(lambda x: int(x))
+    df['Settlement'] = df['Settlement'].apply(lambda x: int(x))
     df['Building_Type'] = df['Building_Type'].apply(lambda x: int(x))
-
-    df['Garden'] = pickles['encoders']['Garden'].transform(df[['Garden']])
-    df['Building_Fenced'] = pickles['encoders']['Building_Fenced'].transform(df[['Building_Fenced']])
-    df['Building_Painted'] = pickles['encoders']['Building_Painted'].transform(df[['Building_Painted']])
-    df['Settlement'] = pickles['encoders']['Settlement'].transform(df[['Settlement']])
     
     return df
 
-def scale(dataFrame):
-    df = dataFrame.copy()
-    pickles['scaler'][0].fit(df)
-
-    return df
 
 st.title('Are you liable for an insurance claim?')
 
@@ -71,7 +61,6 @@ if st.button('Get your result'):
     data_frame = pd.DataFrame(data, index=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
     data_frame = transform(data_frame)
-    data_frame = scale(data_frame)
-
+    data = dataframe.values
     st.write(model.predict(data_frame))
 

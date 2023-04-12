@@ -65,6 +65,6 @@ if st.button('Get your result'):
     data_frame = transform(data_frame)
     data_frame = scale(data_frame)
 
-    st.write(data_frame)
+    st.write(data_frame[0])
     # st.write(model.predict(data))
 

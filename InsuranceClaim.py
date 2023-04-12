@@ -65,6 +65,9 @@ if st.button('Get your result'):
     data_frame = transform(data_frame)
     data_frame = scale(data_frame)
 
-    st.write(data_frame)
-    st.write(model.predict(data_frame))
+    pred = model.predict(data_frame)
+    pred = pred > .5
+
+    st.write(f"You are liable {'' if pred == True else 'not'} for an insurance claim")
+
 

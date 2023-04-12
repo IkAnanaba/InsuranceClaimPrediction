@@ -24,7 +24,7 @@ def transform(dataFrame):
 
 def scale(dataFrame):
     df = dataFrame.copy()
-    df = scaler.fit(df)
+    df = scaler.transform(df)
     return df
 
 st.title('Are you liable for an insurance claim?')
